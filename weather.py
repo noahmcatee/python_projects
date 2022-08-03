@@ -1,3 +1,6 @@
+# Work in progress. Trying to figure out how to pull the right data from the json file. 
+
+
 import requests
 import json
 
