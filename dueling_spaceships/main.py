@@ -14,8 +14,8 @@ YELLOW = (255, 255, 0)
 
 BORDER = pygame.Rect(WIDTH//2 - 5, 0, 10, HEIGHT)
 
-BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join('space_shooter', 'assets', 'Grenade+1.mp3' ))
-BULLET_FIRE_SOUND = pygame.mixer.Sound(os.path.join('space_shooter', 'assets', 'Gun+Silencer.mp3'))
+BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join('dueling_spaceships', 'assets', 'Grenade+1.mp3'))
+BULLET_FIRE_SOUND = pygame.mixer.Sound(os.path.join('dueling_spaceships', 'assets', 'Gun+Silencer.mp3'))
 
 HEALTH_FONT = pygame.font.SysFont('comicsans', 40)
 WINNER_FONT = pygame.font.SysFont('cominsans', 100)
@@ -30,13 +30,13 @@ SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55, 40
 YELLOW_HIT = pygame.USEREVENT + 1
 RED_HIT = pygame.USEREVENT + 2
 
-YELLOW_SHIP_IMAGE = pygame.image.load(os.path.join('space_shooter', 'assets', 'spaceship_yellow.png'))
+YELLOW_SHIP_IMAGE = pygame.image.load(os.path.join('dueling_spaceships', 'assets', 'spaceship_yellow.png'))
 YELLOW_SHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SHIP_IMAGE, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)), 270)
 
-RED_SHIP_IMAGE = pygame.image.load(os.path.join('space_shooter', 'assets', 'spaceship_red.png'))
+RED_SHIP_IMAGE = pygame.image.load(os.path.join('dueling_spaceships', 'assets', 'spaceship_red.png'))
 RED_SHIP = pygame.transform.rotate(pygame.transform.scale(RED_SHIP_IMAGE, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)), 90)
 
-SPACE = pygame.transform.scale(pygame.image.load(os.path.join('space_shooter', 'assets', 'space.png')), (WIDTH, HEIGHT))
+SPACE = pygame.transform.scale(pygame.image.load(os.path.join('dueling_spaceships', 'assets', 'space.png')), (WIDTH, HEIGHT))
 
 
 def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health):
