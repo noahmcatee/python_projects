@@ -1,4 +1,5 @@
 import curses
+from random import randint
 
 # setup window
 curses.initscr()
@@ -13,6 +14,7 @@ win.nodelay(1) # -1
 snake = [(4, 7), (4, 6), (4, 5)]
 food = (15, 40)
 
+win.addch(food[0], food[1], '*')
 # game logic
 score = 0
 
@@ -27,11 +29,47 @@ while key != ESC:
     event = win.getch()
     key = event if event != -1 else prev_key
 
+    if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, ESC]:
+        key = prev_key
     
-    for cord in snake:
-        win.addch(cord[0], cord[1], '#')
+    # calculate the next coordinates
+    y = snake[0] [0]
+    x = snake[0] [1]
+    if key == curses.KEY_DOWN:
+        y += 1
+    if key == curses.KEY_UP:
+        y -= 1
+    if key == curses.KEY_LEFT:
+        x -= 1
+    if key == curses.KEY_RIGHT:
+        x += 1
 
-    win.addch(food[0], food[1], '*')    
+    snake.insert(0, (y, x)) # append 0(n)
+
+    # check in we hit the border
+    if y == 0: break
+    if y == 19: break
+    if x == 0: break
+    if x == 79: break
+
+    # if snake hits itself
+    if snake[0] in snake[1:]: break
+
+    if snake[0] == food:
+        # eat the food
+        score += 1
+        food = ()
+        while food == ():
+            food = (randint(2,17), randint(2,77))
+            if food in snake:
+                food = ()
+        win.addch(food[0], food[1], '*')
+    else:
+        # move snake
+        last = snake.pop()
+        win.addch(last[0], last[1], ' ')
+
+    win.addch(snake[0][0], snake[0][1], '#')    
 
 curses.endwin()
 print(f"Final score = {score}")
